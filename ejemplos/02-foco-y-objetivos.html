@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Foco, bordes y objetivos · Sesión 6</title>
+<style>
+  * { box-sizing: border-box; }
+  body { margin: 0; font: 16px/1.5 system-ui, "Segoe UI", sans-serif; color: #1b2228; background: #f8f9fa; }
+  main { max-width: 1000px; margin: 0 auto; padding: 24px 16px 48px; }
+  h1 { font-size: 1.75rem; margin: 0 0 8px; }
+  h2 { font-size: 1.25rem; margin: 0 0 12px; }
+  .intro { color: #46545b; margin: 0 0 24px; }
+  section { background: #fff; border: 1px solid #d5dee8; border-radius: 12px; padding: 20px; margin-bottom: 20px; }
+  .pareja { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px; }
+  .caso { border-radius: 10px; padding: 16px; }
+  .mal { background: #fdeced; } .bien { background: #e8f5ee; }
+  .caso h3 { margin: 0 0 8px; font-size: 1rem; }
+  .caso p { margin: 8px 0 0; font-size: .9rem; color: #283138; }
+  .btn { font: 600 15px/1 system-ui, sans-serif; color: #fff; background: #0725d0; border: 0; border-radius: 8px; padding: 12px 18px; cursor: pointer; }
+  /* ❌ anillo pegado: mismo color que el botón → 1:1 sobre el botón */
+  .mal .btn:focus-visible { outline: 2px solid #0725d0; outline-offset: 0; }
+  /* ✅ anillo separado 2 px: el hueco es del color del fondo */
+  .bien .btn:focus-visible { outline: 2px solid #0725d0; outline-offset: 2px; }
+  label { display: block; font-weight: 600; margin-bottom: 4px; }
+  .campo { width: 100%; font: inherit; padding: 10px 12px; border-radius: 8px; background: #fff; }
+  /* ❌ borde 1,27:1 y foco solo cambiando el color del borde */
+  .mal .campo { border: 1px solid #e0e5e9; }
+  .mal .campo:focus { outline: none; border-color: #0725d0; }
+  /* ✅ borde 4,54:1 y foco con borde de 2 px + anillo */
+  .bien .campo { border: 1px solid #6b7880; }
+  .bien .campo:focus-visible { outline: 2px solid #0725d0; outline-offset: 2px; border-color: #0725d0; }
+  .iconos { display: flex; gap: 16px; align-items: center; flex-wrap: wrap; }
+  .ico { display: inline-grid; place-items: center; padding: 0; border: 0; background: transparent; border-radius: 6px; cursor: pointer; color: #374349; position: relative; }
+  .ico svg { width: 16px; height: 16px; }
+  .ico.t16 { width: 16px; height: 16px; }
+  .ico.t24 { width: 24px; height: 24px; }
+  .ico.t44 { width: 44px; height: 44px; }
+  .ico.t44 svg { width: 20px; height: 20px; }
+  .ico { outline: 1px dashed #9747ff; }
+  .ico:focus-visible { outline: 2px solid #0725d0; outline-offset: 2px; }
+  .medida { font-size: .85rem; color: #46545b; }
+</style>
+</head>
+<body>
+<main>
+  <h1>Foco, bordes y objetivos: diseño frente a realidad</h1>
+  <p class="intro">Recorre la página solo con <kbd>Tab</kbd>. Cada caso tiene su versión con barrera y su versión corregida, con los colores reales del Canal de denuncias.</p>
+
+  <section aria-labelledby="t1">
+    <h2 id="t1">1 · El anillo de foco del botón azul</h2>
+    <div class="pareja">
+      <div class="caso mal">
+        <h3>❌ Anillo pegado</h3>
+        <button class="btn" type="button">Siguiente</button>
+        <p>El token <code>border-focus</code> (#0725D0) es el mismo azul del botón: pegado a él, el contraste es 1:1 y el foco no se ve.</p>
+      </div>
+      <div class="caso bien">
+        <h3>✅ Anillo separado 2 px</h3>
+        <button class="btn" type="button">Siguiente</button>
+        <p><code>outline-offset: 2px</code> deja un hueco del color del fondo: 9,61:1 contra el blanco. Así lo hace el proyecto en <code>Button.tsx</code>.</p>
+      </div>
+    </div>
+  </section>
+
+  <section aria-labelledby="t2">
+    <h2 id="t2">2 · El borde del campo y su foco</h2>
+    <div class="pareja">
+      <div class="caso mal">
+        <h3>❌ Borde 1,27:1</h3>
+        <label for="c1">Email</label>
+        <input id="c1" class="campo" type="email" autocomplete="email">
+        <p><code>border-level-3</code> (#E0E5E9): con baja visión no sabes dónde está el campo (1.4.11). Al enfocar solo cambia el color de un borde de 1 px.</p>
+      </div>
+      <div class="caso bien">
+        <h3>✅ Borde 4,54:1</h3>
+        <label for="c2">Email</label>
+        <input id="c2" class="campo" type="email" autocomplete="email">
+        <p>#6B7880 (4,54:1) y un foco que cambia forma y grosor, no solo color.</p>
+      </div>
+    </div>
+  </section>
+
+  <section aria-labelledby="t3">
+    <h2 id="t3">3 · Tamaño del objetivo (2.5.8)</h2>
+    <p class="medida">El recuadro discontinuo es el área que se puede pulsar.</p>
+    <div class="iconos">
+      <button class="ico t16" type="button" aria-label="Eliminar (16 px)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 7h16M9 7V4h6v3M6 7l1 13h10l1-13"/></svg></button>
+      <span class="medida">16 × 16 · no cumple</span>
+      <button class="ico t24" type="button" aria-label="Eliminar (24 px)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 7h16M9 7V4h6v3M6 7l1 13h10l1-13"/></svg></button>
+      <span class="medida">24 × 24 · mínimo AA</span>
+      <button class="ico t44" type="button" aria-label="Eliminar (44 px)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 7h16M9 7V4h6v3M6 7l1 13h10l1-13"/></svg></button>
+      <span class="medida">44 × 44 · recomendado (2.5.5, AAA)</span>
+    </div>
+  </section>
+</main>
+</body>
+</html>

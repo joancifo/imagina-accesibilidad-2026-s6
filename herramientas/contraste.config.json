@@ -1,0 +1,21 @@
+{
+  "parejas": [
+    { "primerPlano": "base-text-level-0", "fondo": "base-bg-level-0", "uso": "texto" },
+    { "primerPlano": "base-text-level-3", "fondo": "base-bg-level-0", "uso": "texto" },
+    { "primerPlano": "base-text-level-4", "fondo": "base-bg-level-0", "uso": "texto", "nota": "marcadores de posición" },
+    { "primerPlano": "base-text-level-4", "fondo": "base-bg-level-2", "uso": "texto" },
+    { "primerPlano": "base-icon-level-4", "fondo": "base-bg-level-0", "uso": "grafico", "nota": "separador de las migas de pan" },
+    { "primerPlano": "base-border-level-3", "fondo": "base-bg-level-0", "uso": "grafico", "nota": "borde del campo vacío (fieldStyles.ts)" },
+    { "primerPlano": "base-border-overlay-2", "fondo": "base-bg-level-0", "uso": "grafico", "nota": "borde del campo con texto" },
+    { "primerPlano": "base-border-focus", "fondo": "base-bg-level-0", "uso": "grafico", "nota": "anillo de foco" },
+    { "primerPlano": "interactive-text-inverse", "fondo": "interactive-bg-primary", "uso": "texto", "nota": "botón principal" },
+    { "primerPlano": "interactive-text-primary", "fondo": "interactive-bg-primary-soft", "uso": "texto" },
+    { "primerPlano": "feedback-border-error", "fondo": "base-bg-level-0", "uso": "grafico", "nota": "borde del campo con error" },
+    { "primerPlano": "feedback-text-error-emphasis", "fondo": "base-bg-level-0", "uso": "texto", "nota": "mensaje de error" },
+    { "primerPlano": "feedback-icon-success-emphasis", "fondo": "base-bg-level-0", "uso": "grafico", "nota": "icono del aviso de éxito (Toast.tsx)" },
+    { "primerPlano": "feedback-text-inverse", "fondo": "feedback-bg-success-solid", "uso": "texto" },
+    { "primerPlano": "status-text-orange", "fondo": "status-bg-orange", "uso": "texto", "nota": "etiqueta «En revisión»" },
+    { "primerPlano": "status-text-success", "fondo": "status-bg-success", "uso": "texto" },
+    { "primerPlano": "status-text-info", "fondo": "status-bg-info", "uso": "texto" }
+  ]
+}

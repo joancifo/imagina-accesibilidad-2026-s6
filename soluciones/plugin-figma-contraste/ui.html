@@ -1,0 +1,39 @@
+<style>
+  body { font: 13px/1.4 Inter, system-ui, sans-serif; margin: 0; padding: 12px; color: var(--figma-color-text, #1b2228); background: var(--figma-color-bg, #fff); }
+  h1 { font-size: 14px; margin: 0 0 8px; }
+  button { font: inherit; padding: 6px 10px; border-radius: 6px; border: 1px solid #6b7880; background: transparent; color: inherit; cursor: pointer; }
+  button:focus-visible { outline: 2px solid #0d99ff; outline-offset: 2px; }
+  ul { list-style: none; padding: 0; margin: 12px 0 0; display: grid; gap: 6px; }
+  li { border: 1px solid #d7dadf; border-radius: 6px; padding: 8px; }
+  .mal { border-color: #c01111; }
+  .estado { font-weight: 700; }
+  .mal .estado { color: #c01111; } .bien .estado { color: #1d7240; }
+</style>
+<h1>Revisor de contraste (1.4.3)</h1>
+<button type="button" id="revisar">Revisar la selección</button>
+<p id="resumen" role="status"></p>
+<ul id="lista"></ul>
+<script>
+  const lista = document.getElementById('lista');
+  document.getElementById('revisar').onclick = () => parent.postMessage({ pluginMessage: { tipo: 'revisar' } }, '*');
+  onmessage = (e) => {
+    const m = e.data.pluginMessage;
+    if (!m || m.tipo !== 'resultado') return;
+    const malos = m.filas.filter((f) => f.ok === false).length;
+    document.getElementById('resumen').textContent = `${m.filas.length} textos revisados · ${malos} no cumplen`;
+    lista.innerHTML = '';
+    for (const f of m.filas) {
+      const li = document.createElement('li');
+      li.className = f.ok === false ? 'mal' : f.ok ? 'bien' : '';
+      const estado = f.aviso ? f.aviso : `${f.ok ? 'Cumple' : 'No cumple'} · ${String(f.ratio).replace('.', ',')}:1 (mínimo ${String(f.minimo).replace('.', ',')}:1)`;
+      li.innerHTML = `<div class="estado"></div><div class="texto"></div>`;
+      li.querySelector('.estado').textContent = estado;
+      li.querySelector('.texto').textContent = `«${f.texto}» · capa ${f.nombre}`;
+      const b = document.createElement('button');
+      b.type = 'button'; b.textContent = 'Ir a la capa';
+      b.onclick = () => parent.postMessage({ pluginMessage: { tipo: 'seleccionar', id: f.id } }, '*');
+      li.appendChild(b);
+      lista.appendChild(li);
+    }
+  };
+</script>

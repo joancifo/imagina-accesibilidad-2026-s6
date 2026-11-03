@@ -1,0 +1,247 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Describe tu denuncia · Paso 2 de 3 · Canal de denuncias</title>
+<!-- SOLUCIÓN del reto de handoff (Laboratorio C): el paso 2 en HTML a partir de las anotaciones.
+     Cada comentario «⟨n⟩» remite a la anotación de la imagen solucion-C-anotada.png. -->
+<style>
+  :root {
+    --texto: #1b2228; --texto-2: #46545b; --linea: #6b7880; --linea-suave: #edf0f2;
+    --primario: #0725d0; --primario-texto: #0622bc; --fondo-2: #f8f9fa; --suave: #f0f2ff; --error: #c01111;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; font: 16px/1.5 "Open Sans", system-ui, sans-serif; color: var(--texto); background: #fff; }
+  .saltar { position: absolute; left: 8px; top: -60px; background: #fff; padding: 8px 12px; border-radius: 8px; z-index: 10; }
+  .saltar:focus { top: 8px; }
+  :focus-visible { outline: 2px solid var(--primario); outline-offset: 2px; }
+  header { display: flex; justify-content: space-between; align-items: center; padding: 0 24px; min-height: 56px; border-bottom: 1px solid var(--linea-suave); }
+  .logo { font: 700 20px "Space Grotesk", system-ui, sans-serif; color: #0c23a6; text-decoration: none; }
+  .acciones { display: flex; gap: 4px; align-items: center; }
+  .ico { width: 44px; height: 44px; display: inline-grid; place-items: center; border: 0; border-radius: 8px; background: transparent; color: #374349; cursor: pointer; }
+  .ico svg { width: 20px; height: 20px; }
+  .avatar { width: 32px; height: 32px; border-radius: 50%; background: #e1e5fe; color: var(--primario-texto); display: inline-grid; place-items: center; font-weight: 600; font-size: 12px; }
+  .marco { display: grid; grid-template-columns: 232px 1fr; min-height: calc(100vh - 57px); }
+  nav { background: var(--fondo-2); padding: 24px 16px; }
+  nav ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 4px; }
+  nav a { display: block; padding: 10px 12px; border-radius: 8px; color: var(--texto); text-decoration: none; }
+  nav a[aria-current="page"] { background: #e1e5fe; color: var(--primario-texto); font-weight: 600; }
+  main { padding: 24px 32px 40px; min-width: 0; }
+  .titulo { display: flex; align-items: center; gap: 8px; }
+  h1 { font: 700 26px/1.2 "Space Grotesk", system-ui, sans-serif; margin: 0; }
+  .pasos { list-style: none; display: flex; flex-wrap: wrap; gap: 12px 28px; padding: 0; margin: 16px 0 20px; }
+  .pasos li { display: flex; gap: 8px; align-items: center; }
+  .pasos .num { width: 28px; height: 28px; border-radius: 50%; display: grid; place-items: center; font-weight: 600; font-size: 13px; border: 1px solid var(--texto-2); color: var(--texto-2); }
+  .pasos [aria-current="step"] .num, .pasos .hecho .num { background: var(--primario); color: #fff; border-color: var(--primario); }
+  .pasos small { display: block; color: var(--texto-2); font-size: 12px; }
+  .columnas { display: grid; grid-template-columns: minmax(0, 1fr) 300px; gap: 24px; align-items: start; }
+  form { border: 1px solid var(--linea-suave); border-radius: 12px; padding: 28px; }
+  h2 { font-size: 18px; margin: 0 0 4px; }
+  .desc { color: var(--texto-2); margin: 0 0 20px; }
+  .fila { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 18px; }
+  .campo { display: grid; gap: 6px; margin-bottom: 18px; }
+  .fila .campo { margin-bottom: 0; }
+  label, legend { font-weight: 600; }
+  input[type="text"], input[type="date"], select, textarea { width: 100%; font: inherit; padding: 10px 12px; border: 1px solid var(--linea); border-radius: 8px; background: #fff; color: var(--texto); }
+  textarea { min-height: 110px; resize: vertical; }
+  .casilla, .opcion { display: flex; gap: 10px; align-items: center; min-height: 44px; font-weight: 400; }
+  .casilla input, .opcion input { width: 20px; height: 20px; margin: 0; accent-color: var(--primario); }
+  .ayuda { color: var(--texto-2); font-size: 13px; }
+  fieldset { border: 0; padding: 0; margin: 0 0 20px; }
+  fieldset legend { font-size: 16px; padding: 0; margin-bottom: 4px; }
+  .botones { display: flex; flex-wrap: wrap; gap: 12px; justify-content: space-between; }
+  .botones .derecha { display: flex; gap: 12px; flex-wrap: wrap; }
+  .btn { font-weight: 600; font-size: 14px; line-height: 1; font-family: inherit; padding: 13px 18px; border-radius: 8px; cursor: pointer; min-height: 44px; }
+  .btn-primario { background: var(--primario); color: #fff; border: 0; }
+  .btn-secundario { background: #fff; color: var(--primario-texto); border: 1px solid var(--primario); }
+  aside { background: var(--suave); border-radius: 12px; padding: 24px; }
+  aside h2 { color: #0c23a6; margin-top: 12px; }
+  aside a { color: var(--primario-texto); font-weight: 600; }
+  dialog { border: 1px solid #d7dadf; border-radius: 12px; padding: 24px; max-width: min(460px, calc(100vw - 32px)); }
+  dialog::backdrop { background: rgba(0, 8, 30, .33); }
+  dialog .cab { display: flex; justify-content: space-between; align-items: center; gap: 8px; }
+  dialog h2 { font-size: 20px; margin: 0; }
+  .visualmente-oculto { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+  /* Reflow (1.4.10): a 320 px todo en una columna y sin scroll horizontal */
+  @media (max-width: 900px) {
+    .columnas { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 700px) {
+    .marco { grid-template-columns: 1fr; }
+    nav { padding: 8px 16px; }
+    nav ul { display: flex; flex-wrap: wrap; gap: 4px; }
+    main { padding: 16px; }
+    form { padding: 16px; }
+    .fila { grid-template-columns: 1fr; }
+    header { padding: 0 8px 0 16px; }
+    .botones, .botones .derecha { flex-direction: column-reverse; width: 100%; }
+    .btn { width: 100%; }
+  }
+</style>
+</head>
+<body>
+<a class="saltar" href="#contenido">Saltar al contenido</a>
+
+<!-- header -->
+<header>
+  <a class="logo" href="#">LOGOIPSUM<span class="visualmente-oculto"> · Inicio</span></a>
+  <div class="acciones">
+    <!-- ⟨1⟩ ⟨2⟩ ⟨3⟩ iconos con nombre accesible y 44 × 44. El avatar muestra «NA»: su nombre tiene que contener ese texto visible (2.5.3) -->
+    <button class="ico" type="button" aria-label="Ayuda"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M9.5 9.5a2.5 2.5 0 1 1 3.5 2.3c-.6.3-1 .8-1 1.5v.7M12 17v.5"/></svg></button>
+    <button class="ico" type="button" aria-label="Notificaciones"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 16v-5a6 6 0 1 1 12 0v5l2 2H4z"/><path d="M10 20a2 2 0 0 0 4 0"/></svg></button>
+    <button class="ico" type="button" aria-label="NA, menú de usuario" aria-expanded="false"><span class="avatar" aria-hidden="true">NA</span></button>
+  </div>
+</header>
+
+<div class="marco">
+  <!-- nav · «Menú principal» ⟨4–8⟩ -->
+  <nav aria-label="Menú principal">
+    <ul>
+      <li><a href="#">Proyectos</a></li>
+      <li><a href="#">Documentos</a></li>
+      <li><a href="#" aria-current="page">Canal de denuncias</a></li>
+      <li><a href="#">Mis fichajes</a></li>
+      <li><a href="#">Mi perfil</a></li>
+    </ul>
+  </nav>
+
+  <!-- main -->
+  <main id="contenido" tabindex="-1">
+    <div class="titulo">
+      <!-- ⟨9⟩ -->
+      <a class="ico" href="#" aria-label="Volver a Canal de denuncias"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M19 12H5m0 0 6-6m-6 6 6 6"/></svg></a>
+      <h1>Reporta una denuncia</h1>
+    </div>
+
+    <!-- lista de pasos · actual con aria-current="step" -->
+    <ol class="pasos" aria-label="Pasos del formulario">
+      <li class="hecho"><span class="num" aria-hidden="true">✓</span><span>Identifícate <small>Completado</small></span></li>
+      <li aria-current="step"><span class="num" aria-hidden="true">2</span><span>Describe tu denuncia <small>Paso actual</small></span></li>
+      <li><span class="num" aria-hidden="true">3</span><span>Adjunta documentos <small>Pendiente</small></span></li>
+    </ol>
+
+    <div class="columnas">
+      <!-- form · nombre: su h2 -->
+      <form aria-labelledby="t-form" novalidate>
+        <h2 id="t-form">Describe tu denuncia</h2>
+        <p class="desc">Introduce la información relativa a los hechos a denunciar.</p>
+
+        <div class="fila">
+          <div class="campo">
+            <!-- ⟨10⟩ -->
+            <label for="relacion">¿Cuál es tu relación con la empresa?</label>
+            <select id="relacion" name="relacion">
+              <option value="">Selecciona</option>
+              <option>Empleado/a</option><option>Manager</option><option>Jefe/a de área</option><option>Directivo/a</option>
+            </select>
+          </div>
+          <div class="campo">
+            <!-- ⟨11⟩ -->
+            <label for="tipo">¿Qué tipo de irregularidad quieres denunciar?</label>
+            <select id="tipo" name="tipo">
+              <option value="">Selecciona</option>
+              <option>Acoso laboral</option><option>Robo/hurto</option><option>Conducta indebida</option><option>Agresión</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="fila">
+          <div class="campo">
+            <!-- ⟨12⟩ ⟨13⟩ con un input date nativo el botón «Elegir fecha» ya lo trae el navegador -->
+            <label for="fecha">¿Cuándo tuvieron lugar los hechos?</label>
+            <input id="fecha" name="fecha" type="date">
+          </div>
+          <!-- ⟨14⟩ toda la fila es clicable (44 px) -->
+          <label class="casilla"><input type="checkbox" name="perpetuan"> Los hechos se perpetúan en la actualidad.</label>
+        </div>
+
+        <div class="campo">
+          <!-- ⟨15⟩ -->
+          <label for="asunto">Indica un asunto</label>
+          <input id="asunto" name="asunto" type="text" autocomplete="off">
+        </div>
+
+        <div class="campo">
+          <!-- ⟨16⟩ contador enlazado y anuncio educado cada 100 caracteres -->
+          <label for="descripcion">Descripción</label>
+          <textarea id="descripcion" name="descripcion" maxlength="2000" aria-describedby="ayuda-desc contador"></textarea>
+          <span id="ayuda-desc" class="ayuda">Describe qué ha pasado, quién estaba presente y dónde.</span>
+          <span id="contador" class="ayuda">0 de 2000 caracteres</span>
+          <span id="aviso-contador" class="visualmente-oculto" aria-live="polite"></span>
+        </div>
+
+        <!-- ⟨17⟩ fieldset · legend -->
+        <fieldset aria-describedby="ayuda-frec">
+          <legend>Frecuencia y precedentes de los hechos</legend>
+          <p id="ayuda-frec" class="ayuda">Indica si los hechos se han producido o no con anterioridad y con qué frecuencia.</p>
+          <label class="opcion"><input type="radio" name="frecuencia" value="nunca"> No se habían producido nunca anteriormente.</label>
+          <label class="opcion"><input type="radio" name="frecuencia" value="una-vez"> Se han producido en una ocasión con anterioridad.</label>
+          <label class="opcion"><input type="radio" name="frecuencia" value="varias-veces"> Se han producido varias veces con anterioridad.</label>
+        </fieldset>
+
+        <!-- ⟨18⟩ ⟨19⟩ ⟨20⟩ las tres acciones al final del formulario: el orden del HTML es el orden de Tab -->
+        <div class="botones">
+          <button class="btn btn-secundario" type="button">Atrás</button>
+          <div class="derecha">
+            <button class="btn btn-secundario" type="button" id="cancelar">Cancelar</button>
+            <button class="btn btn-primario" type="submit">Siguiente</button>
+          </div>
+        </div>
+      </form>
+
+      <!-- aside -->
+      <aside aria-labelledby="t-aside">
+        <!-- ilustración decorativa: alt vacío -->
+        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 252 150'%3E%3Crect x='66' y='16' width='120' height='124' rx='10' fill='%23fff' stroke='%23A1AFFC' stroke-width='3'/%3E%3Cpath d='M176 70l34 13v26c0 20-16 33-34 37-18-4-34-17-34-37V83z' fill='%230725D0'/%3E%3Cpath d='m162 106 10 10 20-22' fill='none' stroke='%23fff' stroke-width='6' stroke-linecap='round'/%3E%3C/svg%3E" alt="" width="252" height="150">
+        <h2 id="t-aside">Tu denuncia es confidencial</h2>
+        <p>Solo el equipo de cumplimiento podrá leerla. Puedes adjuntar documentos en el siguiente paso.</p>
+        <!-- ⟨21⟩ -->
+        <a href="#">¿Tienes dudas? Más información sobre el canal</a>
+      </aside>
+    </div>
+  </main>
+</div>
+
+<!-- Diálogo de salida (Laboratorio B) -->
+<dialog id="salir" aria-labelledby="t-salir" aria-describedby="d-salir">
+  <div class="cab">
+    <h2 id="t-salir">¿Seguro que quieres salir?</h2>
+    <button class="ico" type="button" aria-label="Cerrar" data-cerrar="quedarse"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+  </div>
+  <p id="d-salir">Si sales del formulario, los cambios no se guardarán.</p>
+  <div class="botones">
+    <button class="btn btn-secundario" type="button" data-cerrar="salir">Salir sin guardar</button>
+    <button class="btn btn-primario" type="button" data-cerrar="quedarse" autofocus>Permanecer aquí</button>
+  </div>
+</dialog>
+
+<script>
+// Contador: el texto visible se actualiza siempre; el lector solo lo oye cada 100 caracteres.
+const desc = document.getElementById('descripcion');
+const contador = document.getElementById('contador');
+const aviso = document.getElementById('aviso-contador');
+let ultimoTramo = 0;
+desc.addEventListener('input', () => {
+  const n = desc.value.length;
+  contador.textContent = `${n} de 2000 caracteres`;
+  const tramo = Math.floor(n / 100);
+  if (tramo !== ultimoTramo) { ultimoTramo = tramo; aviso.textContent = `${n} de 2000 caracteres`; }
+});
+
+// Diálogo: showModal() atrapa Tab, Esc lo cierra y el foco vuelve al botón que lo abrió.
+const dlg = document.getElementById('salir');
+const cancelar = document.getElementById('cancelar');
+cancelar.addEventListener('click', () => dlg.showModal());
+dlg.addEventListener('click', (e) => {
+  const b = e.target.closest('[data-cerrar]');
+  if (b) dlg.close(b.dataset.cerrar);
+});
+dlg.addEventListener('close', () => {
+  if (dlg.returnValue === 'salir') { location.hash = 'salida'; }
+  cancelar.focus();
+});
+</script>
+</body>
+</html>

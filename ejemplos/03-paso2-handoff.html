@@ -1,0 +1,134 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Paso 2</title>
+<!-- RETO DE HANDOFF (Laboratorio C · para quien programa)
+     Así lo «maquetó» alguien que solo miró el diseño, sin anotaciones: se ve igual, pero no funciona
+     con teclado ni con lector. Con la anotación de vuestro grupo (o la del grupo anterior), resolved los TODO.
+     No hace falta CSS nuevo: casi todo es cambiar etiquetas y atributos.
+     Comprobad con Tab, con el lector y con F12 → Lighthouse → Accesibilidad. Y a 320 px de ancho (F12 → modo dispositivo).
+     Solución: ../soluciones/03-paso2-handoff.html -->
+<style>
+  * { box-sizing: border-box; }
+  body { margin: 0; font: 16px/1.5 "Open Sans", system-ui, sans-serif; color: #1b2228; }
+  .cabecera { display: flex; justify-content: space-between; align-items: center; padding: 0 24px; height: 56px; border-bottom: 1px solid #edf0f2; }
+  .logo { font: 700 20px system-ui, sans-serif; color: #0c23a6; }
+  .icono { width: 20px; height: 20px; margin-left: 16px; cursor: pointer; color: #374349; display: inline-block; }
+  .marco { display: flex; }
+  .menu { width: 232px; background: #f8f9fa; padding: 24px 16px; flex: none; }
+  .menu div { padding: 10px 12px; border-radius: 8px; cursor: pointer; }
+  .menu .activo { background: #e1e5fe; color: #0622bc; font-weight: 600; }
+  .contenido { padding: 24px 32px; flex: 1; }
+  .fila-titulo { display: flex; justify-content: space-between; align-items: center; }
+  .titulo { font: 700 26px system-ui, sans-serif; }
+  .boton { display: inline-block; padding: 10px 18px; border-radius: 8px; font-weight: 600; cursor: pointer; }
+  .primario { background: #0725d0; color: #fff; }
+  .secundario { border: 1px solid #a1affc; color: #0622bc; }
+  .pasos { display: flex; gap: 28px; margin: 16px 0; color: #46545b; }
+  .actual { color: #0622bc; font-weight: 600; }
+  .columnas { display: flex; gap: 24px; }
+  .tarjeta { border: 1px solid #edf0f2; border-radius: 12px; padding: 28px; flex: 1; }
+  .subtitulo { font-size: 18px; font-weight: 600; }
+  .etiqueta { font-weight: 600; margin: 16px 0 6px; }
+  .control { width: 100%; padding: 10px 12px; border: 1px solid #e0e5e9; border-radius: 8px; font: inherit; }
+  .ayuda { background: #f0f2ff; border-radius: 12px; padding: 24px; width: 300px; }
+  .radio { display: flex; gap: 10px; align-items: center; margin: 6px 0; cursor: pointer; }
+  .circulo { width: 20px; height: 20px; border: 1px solid #58676f; border-radius: 50%; }
+</style>
+</head>
+<body>
+<!-- TODO 1 · idioma: el lector no sabe que la página está en español (3.1.1) -->
+<!-- TODO 2 · título: «Paso 2» no dice de qué web ni de qué formulario (2.4.2) -->
+<!-- TODO 3 · añade un enlace «Saltar al contenido» (2.4.1) -->
+
+<!-- TODO 4 · regiones: esto debería ser <header>, el menú un <nav> con nombre y el contenido un <main> -->
+<div class="cabecera">
+  <div class="logo">LOGOIPSUM</div>
+  <div>
+    <!-- TODO 5 · tres iconos sin nombre y sin teclado: botones con aria-label, 44 × 44 (anotaciones 1, 2 y 3) -->
+    <span class="icono" onclick="alert('Ayuda')">?</span>
+    <span class="icono" onclick="alert('Notificaciones')">🔔</span>
+    <span class="icono" onclick="alert('Menú de usuario')">NA</span>
+  </div>
+</div>
+
+<div class="marco">
+  <div class="menu">
+    <!-- TODO 6 · enlaces de verdad en una lista; la página actual con aria-current="page" -->
+    <div>Proyectos</div>
+    <div>Documentos</div>
+    <div class="activo">Canal de denuncias</div>
+    <div>Mis fichajes</div>
+    <div>Mi perfil</div>
+  </div>
+
+  <div class="contenido">
+    <div class="fila-titulo">
+      <!-- TODO 7 · el título de la página es el h1 -->
+      <div class="titulo"><span onclick="history.back()">←</span> Reporta una denuncia</div>
+      <!-- TODO 8 · estas acciones van al final del formulario: el orden del HTML es el orden de Tab (anotaciones 19 y 20) -->
+      <div>
+        <span class="boton secundario" onclick="alert('¿Salir?')">Cancelar</span>
+        <span class="boton primario" onclick="alert('Siguiente')">Siguiente</span>
+      </div>
+    </div>
+
+    <!-- TODO 9 · lista ordenada de pasos; el actual con aria-current="step" y el estado en texto, no solo en color -->
+    <div class="pasos">
+      <div>✓ Identifícate</div>
+      <div class="actual">2 Describe tu denuncia</div>
+      <div>3 Adjunta documentos</div>
+    </div>
+
+    <div class="columnas">
+      <!-- TODO 10 · esto es un <form> con nombre; «Describe tu denuncia» es un h2 -->
+      <div class="tarjeta">
+        <div class="subtitulo">Describe tu denuncia</div>
+        <p>Introduce la información relativa a los hechos a denunciar.</p>
+
+        <!-- TODO 11 · cada .etiqueta debe ser un <label for> unido a su control -->
+        <div class="etiqueta">¿Cuál es tu relación con la empresa?</div>
+        <select class="control"><option>Selecciona</option><option>Empleado/a</option><option>Manager</option></select>
+
+        <div class="etiqueta">¿Qué tipo de irregularidad quieres denunciar?</div>
+        <select class="control"><option>Selecciona</option><option>Acoso laboral</option><option>Robo/hurto</option></select>
+
+        <div class="etiqueta">¿Cuándo tuvieron lugar los hechos?</div>
+        <!-- TODO 12 · un input de fecha nativo trae su propio botón de calendario accesible -->
+        <input class="control" placeholder="dd/mm/aaaa">
+
+        <!-- TODO 13 · casilla real con su texto como label (toda la fila clicable) -->
+        <div class="radio"><span class="circulo" style="border-radius:4px"></span> Los hechos se perpetúan en la actualidad.</div>
+
+        <div class="etiqueta">Indica un asunto</div>
+        <input class="control" placeholder="Escribe aquí un asunto">
+
+        <div class="etiqueta">Descripción</div>
+        <!-- TODO 14 · la ayuda en un texto visible enlazado con aria-describedby (no en el placeholder) -->
+        <textarea class="control" rows="4" placeholder="Describe qué ha pasado, quién estaba presente y dónde."></textarea>
+        <div style="font-size:12px;color:#58676f">0 / 2000</div>
+
+        <!-- TODO 15 · grupo de opciones: fieldset + legend, y radios de verdad (anotación 17) -->
+        <div class="subtitulo" style="margin-top:20px">Frecuencia y precedentes de los hechos</div>
+        <div class="radio"><span class="circulo"></span> No se habían producido nunca anteriormente.</div>
+        <div class="radio"><span class="circulo"></span> Se han producido en una ocasión con anterioridad.</div>
+        <div class="radio"><span class="circulo"></span> Se han producido varias veces con anterioridad.</div>
+
+        <span class="boton secundario" onclick="history.back()">Atrás</span>
+      </div>
+
+      <!-- TODO 16 · <aside> con nombre; la ilustración es decorativa (alt="") -->
+      <div class="ayuda">
+        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 252 150'%3E%3Crect x='66' y='16' width='120' height='124' rx='10' fill='%23fff' stroke='%23A1AFFC' stroke-width='3'/%3E%3Cpath d='M176 70l34 13v26c0 20-16 33-34 37-18-4-34-17-34-37V83z' fill='%230725D0'/%3E%3C/svg%3E" width="252" height="150">
+        <div class="subtitulo" style="color:#0c23a6">Tu denuncia es confidencial</div>
+        <p>Solo el equipo de cumplimiento podrá leerla. Puedes adjuntar documentos en el siguiente paso.</p>
+        <span style="color:#0622bc;text-decoration:underline;cursor:pointer">¿Tienes dudas? Más información</span>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- TODO 17 · reflow: a 320 px de ancho hay scroll horizontal. Haz que .marco y .columnas pasen a una columna (1.4.10) -->
+</body>
+</html>

@@ -1,6 +1,8 @@
 # Laboratorio B · Estados, foco, objetivos y componentes
 
-**33 minutos · por grupos · tema 5** (estados, indicadores de foco, tamaño de los objetivos, formularios, componentes complejos, variantes y documentación en Figma)
+> **Hoy, jueves 5 de noviembre, lo hacemos todos juntos (13 minutos)** en la pantalla del profesor: encontramos por el chat las 8 barreras de B3, medimos los iconos con la plantilla de 24 px (B2) y dictamos la ficha del diálogo. **En casa**, en vuestra copia: B1 (componentes), B2 y B3 completos, siguiendo esta guía (unos 30 minutos).
+
+**Guía completa: 33 minutos · tema 5** (estados, indicadores de foco, tamaño de los objetivos, formularios, componentes complejos, variantes y documentación en Figma)
 
 | Etapa | Qué hacéis | Minutos | Casillas |
 |---|---|---|---|

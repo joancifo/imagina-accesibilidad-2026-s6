@@ -1,18 +1,20 @@
 # Laboratorio A · Color, contraste y tipografía
 
-**38 minutos · por grupos · tema 5** (responsabilidad del diseño, contraste de color, tipografía accesible, uso del color)
+**15 minutos en las salas · por grupos · tema 5** (responsabilidad del diseño, contraste de color, tipografía accesible, uso del color)
+
+> **Hoy, jueves 5 de noviembre:** en la sala hacemos **A1** (minutos 0 – 13) y, si os sobra tiempo, empezáis **A2**. **A2 y A3 se terminan en casa**, en vuestra copia de Figma: son avance del proyecto final.
 
 | Etapa | Qué hacéis | Minutos | Casillas |
 |---|---|---|---|
-| **A1** · Encontrar | Las 10 barreras de la pantalla de inicio, a la hoja amarilla | 0 – 12 | 5 |
-| **A2** · Medir | La paleta real del proyecto: 10 parejas, ratio y uso | 12 – 22 | 4 |
-| **A3** · Arreglar | Corregir la pantalla en vuestra copia | 22 – 38 | 5 |
+| **A1** · Encontrar | Las 10 barreras de la pantalla de inicio, a la hoja amarilla | 0 – 13 (en la sala) | 5 |
+| **A2** · Medir | La paleta real del proyecto: 10 parejas, ratio y uso | 13 – 15 · en casa | 4 |
+| **A3** · Arreglar | Corregir la pantalla en vuestra copia | En casa (≈ 15 min) | 5 |
 
 > **La pantalla.** *A · Canal de denuncias (inicio)*, en la sección A de la página 🧪 Sesión 6 · Laboratorio. Es la portada del canal: cabecera, aviso de éxito, «Sobre el canal», «Mis denuncias» con tres indicadores y el historial. Se ve bien en un monitor bueno… y tiene **10 barreras** de color y texto.
 
 ---
 
-## A1 · Encontrar (12 minutos)
+## A1 · Encontrar (13 minutos, en la sala)
 
 Pilota quien menos haya usado Figma.
 
@@ -43,7 +45,7 @@ Pilota quien menos haya usado Figma.
 
 ---
 
-## A2 · Medir la paleta (10 minutos)
+## A2 · Medir la paleta (10 minutos · si sobra tiempo o en casa)
 
 Rotad roles. Marco *A2 · La paleta real del proyecto*: diez parejas de colores sacadas de `src/styles/tokens.css`.
 
@@ -63,7 +65,7 @@ Rotad roles. Marco *A2 · La paleta real del proyecto*: diez parejas de colores 
 
 ---
 
-## A3 · Arreglar (16 minutos)
+## A3 · Arreglar (en casa, unos 15 minutos)
 
 Rotad roles. En **vuestra copia**, corregid la pantalla. Empezad por lo que es un clic.
 

@@ -1,6 +1,8 @@
 # Laboratorio C · Estructura, orden, reflow y handoff
 
-**30 minutos · por grupos · tema 5** (orden de lectura y de foco, navegación con teclado, reflow, imágenes y alternativas, anotaciones y handoff, colaboración)
+> **Hoy, jueves 5 de noviembre, lo hacemos todos juntos (8 minutos)**: toda la clase hace de desarrollo y responde por el chat las 6 preguntas de C3 sobre el paso 2. **En casa**, en vuestra copia: C1 (anotar con el kit) y C2 (reflow a 320 px). C3 se puede hacer con un compañero, intercambiando capturas.
+
+**Guía completa: 30 minutos · tema 5** (orden de lectura y de foco, navegación con teclado, reflow, imágenes y alternativas, anotaciones y handoff, colaboración)
 
 | Etapa | Qué hacéis | Minutos | Casillas |
 |---|---|---|---|

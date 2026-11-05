@@ -4,6 +4,8 @@
 
 Hoy no hay código obligatorio: todo se hace en **Figma**, sobre pantallas del **Canal de denuncias** (el proyecto final).
 
+**Jueves 5 de noviembre · 15:00 – 17:00.** Solo el **laboratorio A** es en las salas (15 minutos). Los laboratorios **B y C** los hacemos **todos juntos** en la sala principal: el profesor comparte Figma y vosotros respondéis por el chat (la primera respuesta correcta suma 1 punto para el grupo). Lo que no da tiempo se termina en casa con las guías.
+
 ## Antes de empezar (3 minutos)
 
 1. Abre el archivo del laboratorio (enlace en el chat): **https://www.figma.com/design/oBZqhVJeQ8FykAT0CVItMF**
@@ -14,7 +16,7 @@ Hoy no hay código obligatorio: todo se hace en **Figma**, sobre pantallas del *
 
 > ¿No te deja duplicar o editar? Trabaja en el ordenador del piloto: basta con **una copia editable por grupo**.
 
-## Roles (rotan en cada laboratorio)
+## Roles en el laboratorio A
 
 | Rol | Qué hace |
 |---|---|

@@ -1,7 +1,9 @@
 # Sesión 6 · Diseño inclusivo, Figma y experiencia de usuario
 
 **Accesibilidad Web WCAG 2.2 para Desarrolladores React y Angular · Joan Cifo · Imagina Formación**
-Miércoles 4 de noviembre · 15:00 – 18:30 · Tema 5 del temario
+Jueves 5 de noviembre · 15:00 – 17:00 · Tema 5 del temario
+
+Hoy: el laboratorio A en salas (15 min); B y C, todos juntos en la sala principal. Lo que no da tiempo, en casa con las guías.
 
 Hoy se trabaja en **Figma** sobre pantallas del **Canal de denuncias** (el proyecto final). No hay código obligatorio; los retos para quien programa son en HTML y JavaScript, sin frameworks.
 
